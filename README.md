@@ -12,6 +12,7 @@ Both types of tokens should be sent in the Authorization header,
     Format for api_token "ServiceAccount TOKEN"
 
 # Routes
+````
 POST /service_accounts
     Body:
         name
@@ -20,6 +21,7 @@ POST /service_accounts
     Creates a new Service account
     Requeres authentication with Service Account api_token
     Returns service account token
+```
 
 # Install
 
