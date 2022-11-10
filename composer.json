@@ -1,0 +1,26 @@
+{
+    "name": "openwod/service-accounts",
+    "description": "A package for adding service accounts to the project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rasmus Wiktell Sundman",
+            "email": "rasmus@rmsit.se"
+        }
+    ],
+    "require": {
+        "laravel/sanctum": "3.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Openwod\\ServiceAccounts\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Openwod\\ServiceAccounts\\ServiceAccountsServiceProvider"
+            ]
+        }
+    }
+}
