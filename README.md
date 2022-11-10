@@ -12,7 +12,7 @@ Both types of tokens should be sent in the Authorization header,
     Format for api_token "ServiceAccount TOKEN"
 
 # Routes
-````
+```
 POST /service_accounts
     Body:
         name
