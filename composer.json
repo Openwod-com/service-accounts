@@ -1,6 +1,6 @@
 {
     "name": "openwod/service-accounts",
-    "description": "A package for adding service accounts to the project",
+    "description": "A package for adding service accounts to a Laravel project",
     "license": "MIT",
     "authors": [
         {
@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "laravel/sanctum": "3.0.1"
+        "laravel/sanctum": "^3.0.1"
     },
     "autoload": {
         "psr-4": {
