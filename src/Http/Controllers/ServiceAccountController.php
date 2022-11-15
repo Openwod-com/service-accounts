@@ -51,4 +51,15 @@ class ServiceAccountController extends Controller
             "permissions" => $svc->tokens[0]["abilities"]
         ];
     }
+
+    public function destroy(Request $request, $name)
+    {
+        if(!$this->checkPermission($request, 'service-accounts.destroy'))
+            return abort(401, "Authentication denied");
+
+        $svc = ServiceAccount::where('name', $name)->firstOrFail();
+        $svc->delete();
+
+        return ["status" => "success"];
+    }
 }

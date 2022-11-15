@@ -25,6 +25,10 @@ POST /service_accounts
 GET /service_accounts/{name}
     Permission: service-accounts.view
     Returns information about a service account
+
+DELETE /service_accounts/{name}
+    Permission: service-accounts.destroy
+    Deletes a service account
 ```
 
 # Install
