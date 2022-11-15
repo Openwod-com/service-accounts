@@ -2,20 +2,16 @@
 
 namespace Openwod\ServiceAccounts\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Laravel\Sanctum\PersonalAccessToken;
-use Openwod\Quickmetrics\Quickmetrics;
 use Openwod\ServiceAccounts\Models\ServiceAccount;
 
 class ServiceAccountController extends Controller
 {
     public function store(Request $request)
     {
-        if(!$this->checkPermission($request, 'service-accounts.create')) {
+        if(!$this->checkPermission($request, 'service-accounts.create'))
             return abort(401, "Authentication denied");
-        }
 
         // Returns error if invalid.
         $request->validate([
@@ -37,5 +33,22 @@ class ServiceAccountController extends Controller
         }
         $token = $svc->createToken($request->name, $permissions)->plainTextToken;
         return ["token" => $token];
+    }
+
+    public function show(Request $request, $name)
+    {
+        if(!$this->checkPermission($request, 'service-accounts.show'))
+            return abort(401, "Authentication denied");
+
+        $svc = ServiceAccount::where('name', $name)->firstOrFail();
+
+        if(count($svc->tokens) == 0)
+            return abort(404, "No service account with specified name");
+
+        return [
+            "name" => $name,
+            # Using 0 becuase this package does only support one token per account.
+            "permissions" => $svc->tokens[0]["abilities"]
+        ];
     }
 }

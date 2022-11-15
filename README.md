@@ -19,8 +19,12 @@ POST /service_accounts
         permissions
             Comma separated list of permissions in format something.something
     Creates a new Service account
-    Requeres authentication with Service Account api_token
+    Permission: service-accounts.create
     Returns service account token
+
+GET /service_accounts/{name}
+    Permission: service-accounts.view
+    Returns information about a service account
 ```
 
 # Install
