@@ -18,7 +18,7 @@ class ServiceAccountController extends Controller
             'name' => 'required|alpha_dash',
             // format something.somthing,something.something.something
             // Not allowed to end with dot or comma
-            'permissions' => 'required|regex:/^(([a-z0-9-]+\.?)+(?<!\.),?)+(?<!,)$/i',
+            'permissions' => 'required|regex:/^(([a-z0-9-\*]+\.?)+(?<!\.),?)+(?<!,)$/i',
         ]);
 
         $permissions = explode(',', $request->permissions);
